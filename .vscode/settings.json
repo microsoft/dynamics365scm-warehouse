@@ -1,0 +1,23 @@
+{
+    "rest-client.environmentVariables": {
+        "$shared": {
+			"version": "v1"
+				   },
+		"local": {
+			"EnvAOS": "https://usnconeboxax1aos.cloud.onebox.dynamics.com",
+            //"EnvAOSToken": {{$aadV2Token scopes:https://usnconeboxax1aos.cloud.onebox.dynamics.com/Odata.FullAccess tenantId:c83429a6-782b-4275-85cf-60ebe81250ee clientId:bf76fe84-c139-44e0-bd25-e3c83a753962}},
+            "EnvDataAreaId":  "USMF",
+            "EnvWarehouse": "24",
+            "EnvSourceSystem": "ERP"
+				 },
+		"production": {
+        	"EnvAOS": "https://hxhfqlujvatuv8ueeq.operations.int.dynamics.com",
+            //"EnvAOSToken": {{$aadV2Token scopes:https://hxhfqlujvatuv8ueeq.operations.int.dynamics.com/Odata.FullAccess tenantId:c83429a6-782b-4275-85cf-60ebe81250ee clientId:bf76fe84-c139-44e0-bd25-e3c83a753962}},
+            "EnvDataAreaId":  "USMF",
+            "EnvWarehouse": "24",
+            "EnvSourceSystem": "ERP"
+		             }
+	    }
+        "$shared": {}
+    }
+}

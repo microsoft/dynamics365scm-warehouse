@@ -1,0 +1,133 @@
+
+### Outbound shipment order messages WOM - OUT - MODE (.39 ->) 
+@AOS = {{EnvAOS}}
+@AOSToken = {{$aadV2Token scopes:https://usnconeboxax1aos.cloud.onebox.dynamics.com/Odata.FullAccess tenantId:c83429a6-782b-4275-85cf-60ebe81250ee clientId:bf76fe84-c139-44e0-bd25-e3c83a753962}}
+@DataAreaId = {{EnvDataAreaId}}
+@Warehouse = {{EnvWarehouse}}
+@SourceSystem = {{EnvSourceSystem}}
+
+### Outbound shipment order message with lines
+@MessageId = MSG-000001
+@OrderNumber = OSO-000001
+POST {${env:AOS}}/data/OutboundShipmentOrderMessages
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+    "SourceSystemId": "{{SourceSystem}}",
+    "MessageId": "{{MessageId}}",
+    "dataAreaId": "{{DataAreaId}}",
+    "OrderNumber": "{{OrderNumber}}",
+    "OrderType": "Sales",
+    "ShipFromWarehouseId": "{{Warehouse}}",
+    "ConsigneeName": "US-201",
+    "ConsigneeStreet": "234 S Main St.",
+    "ConsigneeCity": "Pleasanton",
+    "ConsigneeState": "CA",
+    "ConsigneeZipCode": "945889",
+    "ConsigneeDistrict": "ConsignerDistrict",
+    "ConsigneeEmail": "ConsignerEmail@someD.com",
+    "ConsigneeContactName": "ConsignerContactName",
+    "ConsigneeCountryRegionId": "USA",
+    "ConsigneeTelephone": "111-555-0177",
+    "ConsigneeReference": "ConsignerReference",
+    "ConsigneeBuildingComplement": "ConsignerBuildingComplement",
+    "ReceiverName": "Rain Projectors",
+    "ReceiverStreet": "123 Boisenberry St",
+    "ReceiverZipCode": "20005",
+    "ReceiverStreetInKana": "",
+    "ReceiverCity": "Issaquah",
+    "ReceiverCityInKana": "",
+    "ReceiverState": "",
+    "ReceiverCounty": "",
+    "ReceiverCountryRegionId": "USA",
+    "ReceiverDistrict": "ReceiverDistrict",
+    "ReceiverLongitude": 0,
+    "RequestedShippingPeriodStart": "2023-11-17T08:00:00Z",
+    "RequestedDeliveryPeriodEnd": "2023-11-17T08:00:00Z",
+    "DeliveryTermsCode": "",
+    "ReservationAtImportPolicy": "None",
+    "ConsigneePurchaseOrderNumber": "",
+    "PlannedTransportationId": "",
+    "ReceiverTimeZone": null,
+    "RequestedDeliveryPeriodStart": "1900-01-01T00:00:00Z",
+    "ConsigneePostBox": "ConsigneePostBox",
+    "ConsigneeAccountNumber": "ConsigneeAccountNumber",
+    "ConsigneeLongitude": 0,
+    "ConsigneeStreetInKana": "",
+    "DeliveryModeCode": "",
+    "ReceiverLatitude": 0,
+    "ConsigneeTimeZone": null,
+    "RequestedShippingPeriodEnd": "1900-01-01T00:00:00Z",
+    "ConsigneeLatitude": 0,
+    "ConsigneeCityInKana": ""
+}
+
+###
+
+POST {{AOS}}/data/OutboundShipmentOrderLineMessages
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+"MessageId": "{{MessageId}}",
+"dataAreaId": "{{DataAreaId}}",
+"SourceSystemId": "{{SourceSystem}}",
+"OrderNumber": "{{OrderNumber}}",
+"OrderLineNumber": 1,
+"ConsigneeLineNumber": 1,
+"ItemNumber": "A0001",
+"OrderedUnitSymbol": "Pcs",
+"OrderedQuantity": 1,
+"ProductConfigurationId": "",
+"ProductSizeId": "",
+"ProductVersionId": "",
+"OverdeliveryPercentage": 0,
+"InventoryOwnerId": "",
+"ItemSerialNumber": "",
+"SellableDays": 0,
+"OrderedInventoryStatusId": "",
+"ItemBatchNumber": "",
+"ProductColorId": "",
+"ConsigneeReference": "",
+"UnderdeliveryPercentage": 0,
+"ProductStyleId": ""
+}
+
+###
+
+POST {{AOS}}/data/OutboundShipmentOrderLineMessages
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+"MessageId": "{{MessageId}}",
+"dataAreaId": "{{DataAreaId}}",
+"SourceSystemId": "{{SourceSystem}}",
+"OrderNumber": "{{OrderNumber}}",
+"OrderLineNumber": 2,
+"ConsigneeLineNumber": 2,
+"ItemNumber": "A0001",
+"OrderedUnitSymbol": "Pcs",
+"OrderedQuantity": 1,
+"ProductConfigurationId": "",
+"ProductSizeId": "",
+"ProductVersionId": "",
+"OverdeliveryPercentage": 0,
+"InventoryOwnerId": "",
+"ItemSerialNumber": "",
+"SellableDays": 0,
+"OrderedInventoryStatusId": "",
+"ItemBatchNumber": "",
+"ProductColorId": "",
+"ConsigneeReference": "",
+"UnderdeliveryPercentage": 0,
+"ProductStyleId": ""
+}
+
+###
+
+POST {{AOS}}/data/OutboundShipmentOrderMessages(dataAreaId='{{DataAreaId}}', SourceSystemId='{{SourceSystem}}', OrderNumber='{{OrderNumber}}', MessageId='{{MessageId}}')/Microsoft.Dynamics.DataEntities.Complete?cross-company=true
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+ 
