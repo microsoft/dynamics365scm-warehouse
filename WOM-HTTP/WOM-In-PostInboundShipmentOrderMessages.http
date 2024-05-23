@@ -1,7 +1,7 @@
 ### Example of Inbound shipment order message with with two lines
 
 ### MessageId
-@MessageId = MSG-ISO-000001
+@MessageId = {{$guid}}
 @OrderNumber = ISO-000001
 @OrderType = Purchase order
 @PlannedReceiptPeriodStart = 2023-11-17T08:00:00Z

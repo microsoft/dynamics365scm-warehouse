@@ -1,7 +1,7 @@
 ### Example of Inbound shipment order messages for x-docking
 
 ### MessageId
-@MessageId = MSG-ISO-XD-000001
+@MessageId = {{$guid}} 
 ### OrderNumber
 @OrderNumber = ISO-XD-000001
 

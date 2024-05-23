@@ -1,6 +1,6 @@
 ### Example of Outbound shipment order message for x-doccking
 
-@MessageId = MSG-XD-OSO-000001
+@MessageId = {{$guid}} 
 @OrderNumber = OSO-XD-000001
 # X-docking-SourceID (will get line # added in this example)
 @CrossDockSourceId = ISO-XD-000001
