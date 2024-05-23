@@ -1,0 +1,6 @@
+### Token to access AOS
+
+
+//
+{{EnvAOSToken}} = AOSToken
+
