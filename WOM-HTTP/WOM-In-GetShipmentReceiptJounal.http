@@ -1,0 +1,23 @@
+### Example of getting information about received inventory related to the journal version provided via business event 'WHSShipmentReceivingJournalModifiedBusinessEvent' data 
+
+@ShipmentReceiptVersionNumber = 1.1
+
+
+@AOS = {{EnvAOS}}
+@AOSToken = {{EnvAOSToken}}
+
+GET {{AOS}}/data/ShipmentReceiptJournalHeaders?$filter=ShipmentReceiptVersionNumber eq '{{ShipmentReceiptVersionNumber}}'
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+###
+
+GET {{AOS}}/data/ShipmentReceiptJournalLines?$filter=ShipmentReceiptVersionNumber eq '{{ShipmentReceiptVersionNumber}}'
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+###
+
+GET {{AOS}}/data/ShipmentReceiptTransactionDimensions?$filter=ShipmentReceiptVersionNumber eq '{{ShipmentReceiptVersionNumber}}'
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json

@@ -1,16 +1,14 @@
-### Inbound shipment order messages
-### Inbound shipment order message with two lines
+### Example of Inbound shipment order message with with two lines
 
 ### MessageId
 @MessageId = MSG-ISO-000001
-### OrderNumber
 @OrderNumber = ISO-000001
 @OrderType = Purchase order
 @PlannedReceiptPeriodStart = 2023-11-17T08:00:00Z
 @PlannedReceiptPeriodEnd  = 2023-11-17T08:00:00Z
 
 @AOS = {{EnvAOS}}
-//@AOSToken = {{$aadV2Token scopes:https://usnconeboxax1aos.cloud.onebox.dynamics.com/Odata.FullAccess tenantId:c83429a6-782b-4275-85cf-60ebe81250ee clientId:bf76fe84-c139-44e0-bd25-e3c83a753962}}
+@AOSToken = {{EnvAOSToken}}
 @DataAreaId = {{EnvDataAreaId}}
 @Warehouse = {{EnvWarehouse}}
 @SourceSystem = {{EnvSourceSystem}}

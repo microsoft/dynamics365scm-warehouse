@@ -1,13 +1,13 @@
-### Example for Inbound shipment order document attachment message
+### Example of Inbound shipment order messages for x-docking
 
 ### MessageId
-@MessageId = MSG-ISO-DA-000004
+@MessageId = MSG-ISO-XD-000001
 ### OrderNumber
-@OrderNumber = ISO-DA-000004
-@AttachmentOrderHeaderNote = Note for order: {{OrderNumber}}
+@OrderNumber = ISO-XD-000001
+
 
 @AOS = {{EnvAOS}}
-@AOSToken = {{$aadV2Token scopes:https://usnconeboxax1aos.cloud.onebox.dynamics.com/Odata.FullAccess tenantId:c83429a6-782b-4275-85cf-60ebe81250ee clientId:bf76fe84-c139-44e0-bd25-e3c83a753962}}
+@AOSToken = {{EnvAOSToken}}
 @DataAreaId = {{EnvDataAreaId}}
 @Warehouse = {{EnvWarehouse}}
 @SourceSystem = {{EnvSourceSystem}}
@@ -26,21 +26,6 @@ Content-Type: application/json
 
 ###
 
-POST {{AOS}}/data/InboundShipmentOrderDocumentAttachmentMessages
-Authorization: Bearer {{AOSToken}}
-Content-Type: application/json
-
-{
-  "MessageId": "{{MessageId}}",
-  "dataAreaId": "{{DataAreaId}}",
-  "SourceSystemId": "{{SourceSystem}}",
-  "OrderNumber": "{{OrderNumber}}",
-  "DocumentAttachmentTypeCode": "Note",
-  "Notes": "{{AttachmentOrderHeaderNote}}"
-}
-
-###
-
 POST {{AOS}}/data/InboundShipmentOrderLineMessages
 Authorization: Bearer {{AOSToken}}
 Content-Type: application/json
@@ -53,7 +38,8 @@ Content-Type: application/json
 "OrderLineNumber": 1,
 "ItemNumber": "A0001",
 "ExpectedQuantity": 10,
-"ExpectedUnitSymbol": "pcs"
+"ExpectedUnitSymbol": "pcs",
+"CrossDockSourceId" : "{{OrderNumber}}-1"
 }
 
 ###
