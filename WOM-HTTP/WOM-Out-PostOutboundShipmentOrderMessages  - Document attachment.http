@@ -1,7 +1,9 @@
-### Example for Inbound shipment order document attachment message
+### Example for Outbound shipment order document attachment message
 
-@MessageId = MSG-ISO-DA-000001
-@OrderNumber = ISO-DA-000001
+@MessageId = MSG-OSO-DA-000001
+@OrderNumber = OSO-DA-000001
+@ConsigneeName = Me
+@ConsigneeCountryRegionId = USA
 // Note attachment
 @AttachmentOrderHeaderNote = Note for order: {{OrderNumber}}
 
@@ -11,7 +13,7 @@
 @Warehouse = {{EnvWarehouse}}
 @SourceSystem = {{EnvSourceSystem}}
 
-POST {{AOS}}/data/InboundShipmentOrderMessages
+POST {{AOS}}/data/OutboundShipmentOrderMessages
 Authorization: Bearer {{AOSToken}}
 Content-Type: application/json
 
@@ -20,12 +22,14 @@ Content-Type: application/json
 "dataAreaId": "{{DataAreaId}}",
 "SourceSystemId": "{{SourceSystem}}",
 "OrderNumber": "{{OrderNumber}}",
-"ReceivingWarehouseId": "{{Warehouse}}"
+"ShipFromWarehouseId": "{{Warehouse}}",
+"ConsigneeName": "{{ConsigneeName}}",
+"ConsigneeCountryRegionId": "{{ConsigneeCountryRegionId}}"
 }
 
 ###
 
-POST {{AOS}}/data/InboundShipmentOrderDocumentAttachmentMessages
+POST {{AOS}}/data/OutboundShipmentOrderDocumentAttachmentMessages
 Authorization: Bearer {{AOSToken}}
 Content-Type: application/json
 
@@ -40,7 +44,7 @@ Content-Type: application/json
 
 ###
 
-POST {{AOS}}/data/InboundShipmentOrderLineMessages
+POST {{AOS}}/data/OutboundShipmentOrderLineMessages
 Authorization: Bearer {{AOSToken}}
 Content-Type: application/json
 
@@ -51,13 +55,13 @@ Content-Type: application/json
 "OrderNumber": "{{OrderNumber}}",
 "OrderLineNumber": 1,
 "ItemNumber": "A0001",
-"ExpectedQuantity": 10,
-"ExpectedUnitSymbol": "pcs"
+"OrderedQuantity": 1,
+"OrderedUnitSymbol": "Pcs"
 }
 
 ###
 
-POST {{AOS}}/data/InboundShipmentOrderMessages(dataAreaId='{{DataAreaId}}', SourceSystemId='{{SourceSystem}}', OrderNumber='{{OrderNumber}}', MessageId='{{MessageId}}')/Microsoft.Dynamics.DataEntities.Complete?cross-company=true
+POST {{AOS}}/data/OutboundShipmentOrderMessages(dataAreaId='{{DataAreaId}}', SourceSystemId='{{SourceSystem}}', OrderNumber='{{OrderNumber}}', MessageId='{{MessageId}}')/Microsoft.Dynamics.DataEntities.Complete?cross-company=true
 Authorization: Bearer {{AOSToken}}
 Content-Type: application/json
  
