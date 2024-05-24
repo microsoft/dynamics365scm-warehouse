@@ -7,7 +7,14 @@
 @DataAreaId = {{EnvDataAreaId}}
 @SourceSystem = {{EnvSourceSystem}}
 
-@ItemNumber = A0004 
+@ItemNumber = AV0001
+@VariantNumber = AV0001_1
+@ProductColorId = C1
+@ProductConfigurationId = 
+@ProductSizeId =
+@ProductStyleId =
+@ProductSubtype = ProductMaster
+@ProductDimensionGroupName = Color
 @StorageDimensionGroupName = Ware
 @TrackingDimensionGroupName = None
 @InventoryReservationHierarchyName = Default
@@ -25,14 +32,14 @@ Content-Type: application/json
 "SourceSystemId": "{{SourceSystem}}",
 "MessageId": "{{MessageId}}",
 "dataAreaId": "{{DataAreaId}}",
-//"ProductSubtype": "{{ProductSubtype}}",
-//"ProductDimensionGroupName": "{{ProductDimensionGroupName}}",
+"ProductSubtype": "{{ProductSubtype}}",
 "SourceSystemProductNumber": "{{ItemNumber}}",
 "SourceSystemItemNumber": "{{ItemNumber}}",
 "SearchName": "",
 "ProductSearchName": "",
 "WarehouseMobileDeviceDescriptionLine1": "",
 "WarehouseMobileDeviceDescriptionLine2": "",
+"ProductDimensionGroupName": "{{ProductDimensionGroupName}}",
 "StorageDimensionGroupName": "{{StorageDimensionGroupName}}",
 "TrackingDimensionGroupName": "{{TrackingDimensionGroupName}}",
 "InventoryReservationHierarchyName": "{{InventoryReservationHierarchyName}}",
@@ -72,4 +79,26 @@ Content-Type: application/json
 "OriginCountryRegionId": "",
 "ShelfAdvicePeriodDays": 0,
 "BestBeforePeriodDays": 0
+}
+
+###
+
+POST {{AOS}}/data//SourceSystemProductVariantMessages?cross-company=true
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+"SourceSystemId": "{{SourceSystem}}",
+"MessageId": "{{MessageId}}",
+"dataAreaId": "{{DataAreaId}}",
+"SourceSystemItemMasterNumber": "{{ItemNumber}}",
+"SourceSystemItemNumber": "{{VariantNumber}}",
+"SourceSystemProductNumber": "{{VariantNumber}}",
+"ProductName": "{{VariantNumber}}",
+"ProductSearchName": "{{VariantNumber}}",
+"ProductDescription": "{{VariantNumber}}",
+"ProductConfigurationId": "{{ProductConfigurationId}}",
+"ProductSizeId": "{{ProductSizeId}}",
+"ProductColorId": "{{ProductColorId}}",
+"ProductStyleId": "{{ProductStyleId}}"
 }
