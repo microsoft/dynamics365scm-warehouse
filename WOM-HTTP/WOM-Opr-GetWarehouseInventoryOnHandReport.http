@@ -7,13 +7,19 @@
 @AOSToken = {{EnvAOSToken}}
 @ReportName = ERP
 
-GET {{AOS}}/data/WarehouseInventoryOnhandReports?$filter=ReportNumber eq {{ReportNumber}}
+# All reports based on name
+GET {{AOS}}/data/WarehouseInventoryOnhandReports?$filter=ReportName eq '{{ReportName}}'&cross-company=true
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+###
+GET {{AOS}}/data/WarehouseInventoryOnhandReports?$filter=ReportNumber eq ({{ReportNumber}})&cross-company=true
 Authorization: Bearer {{AOSToken}}
 Content-Type: application/json
 
 ###
 
-GET {{AOS}}/data/WarehouseInventoryOnhandReportLines?$filter=ReportNumber eq ({{ReportNumber}}) and WarehouseId eq '{{Warehouse}}'
+GET {{AOS}}/data/WarehouseInventoryOnhandReportLines?$filter=ReportNumber eq ({{ReportNumber}}) and WarehouseId eq '{{Warehouse}}'&cross-company=true
 Authorization: Bearer {{AOSToken}}
 Content-Type: application/json
 
