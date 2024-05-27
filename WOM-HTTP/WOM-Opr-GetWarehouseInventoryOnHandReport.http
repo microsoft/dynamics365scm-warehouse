@@ -1,6 +1,6 @@
 ### Example of getting warehouse on-hand information related inventory on-hand report data for the report number provided via business event 'WHSSourceSystemInventoryOnhandReportBusinessEvent' 
 
-@ReportNumber = 691023FA-3271-40AD-86FE-AF1A73AE616C
+@ReportNumber = cf444f2d-412e-49f5-b205-b58203240031
 @Warehouse = {{EnvWarehouse}}
 
 @AOS = {{EnvAOS}}
@@ -19,7 +19,7 @@ Content-Type: application/json
 
 ###
 
-GET {{AOS}}/data/WarehouseInventoryOnhandReportLines?$filter=ReportNumber eq ({{ReportNumber}}) and WarehouseId eq '{{Warehouse}}'&cross-company=true
+GET {{AOS}}/data/WarehouseInventoryOnhandReportLines?$filter=ReportNumber eq ({{ReportNumber}}) and OnHandQuantity ne 0 and WarehouseId eq '{{Warehouse}}'&cross-company=true
 Authorization: Bearer {{AOSToken}}
 Content-Type: application/json
 
