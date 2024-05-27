@@ -1,6 +1,6 @@
 ### Example for Outbound shipment order document attachment message
 
-@MessageId = {{$guid}} 
+@MessageId = OSO-DA-000001 
 @OrderNumber = OSO-DA-000001
 @ConsigneeName = Me
 @ConsigneeCountryRegionId = USA

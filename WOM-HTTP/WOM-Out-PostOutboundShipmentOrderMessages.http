@@ -1,6 +1,6 @@
 ### Example of Outbound shipment order message with two lines
 
-@MessageId = {{$guid}}
+@MessageId = OSO-000001
 @OrderNumber = OSO-000001
 
 @AOS = {{EnvAOS}}

@@ -1,6 +1,6 @@
 ### Example for Inbound shipment order document attachment message
 
-@MessageId = {{$guid}} 
+@MessageId = ISO-DA-000001
 @OrderNumber = ISO-DA-000001
 // Note attachment
 @AttachmentOrderHeaderNote = Note for order: {{OrderNumber}}
