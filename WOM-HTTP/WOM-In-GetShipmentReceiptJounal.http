@@ -1,6 +1,6 @@
 ### Example of getting information about received inventory related to the journal version provided via business event 'WHSShipmentReceivingJournalModifiedBusinessEvent' data
 
-@ShipmentReceiptVersionNumber = USMF-00000001.1
+@ShipmentReceiptVersionNumber = USWH-00000002.1
 
 
 @AOS = {{EnvAOS}}

@@ -1,7 +1,5 @@
 ### Example of Inbound shipment order messages for x-docking
 
-### MessageId
-@MessageId = ISO-XD-000001 
 ### OrderNumber
 @OrderNumber = ISO-XD-000001
 
@@ -12,17 +10,23 @@
 @Warehouse = {{EnvWarehouse}}
 @SourceSystem = {{EnvSourceSystem}}
 
+@MessageId1 = {{$guid}}
+
+# @name ISO
 POST {{AOS}}/data/InboundShipmentOrderMessages
 Authorization: Bearer {{AOSToken}}
 Content-Type: application/json
 
 {
-"MessageId": "{{MessageId}}",
+"MessageId": "{{MessageId1}}",
 "dataAreaId": "{{DataAreaId}}",
 "SourceSystemId": "{{SourceSystem}}",
 "OrderNumber": "{{OrderNumber}}",
 "ReceivingWarehouseId": "{{Warehouse}}"
 }
+###
+
+@MessageId = {{ISO.response.body.MessageId}}
 
 ###
 

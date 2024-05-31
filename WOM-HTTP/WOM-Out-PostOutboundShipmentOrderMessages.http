@@ -1,6 +1,5 @@
 ### Example of Outbound shipment order message with two lines
 
-@MessageId = OSO-000001
 @OrderNumber = OSO-000001
 
 @AOS = {{EnvAOS}}
@@ -9,6 +8,9 @@
 @Warehouse = {{EnvWarehouse}}
 @SourceSystem = {{EnvSourceSystem}}
 
+@MessageId1 = {{$guid}}
+
+# @name ISO
 POST {{AOS}}/data/OutboundShipmentOrderMessages
 Authorization: Bearer {{AOSToken}}
 Content-Type: application/json
@@ -62,6 +64,10 @@ Content-Type: application/json
     "ConsigneeLatitude": 0,
     "ConsigneeCityInKana": ""
 }
+
+###
+
+@MessageId = {{ISO.response.body.MessageId}}
 
 ###
 

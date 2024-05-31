@@ -1,5 +1,5 @@
-### Example of Outbound shipment order message with two lines
-
+### Example of product master data creation via Source system product messages
+### SourceSystemProductMessages
 @MessageId = {{$guid}}
 
 @AOS = {{EnvAOS}}
@@ -7,15 +7,15 @@
 @DataAreaId = {{EnvDataAreaId}}
 @SourceSystem = {{EnvSourceSystem}}
 
-@ItemNumber = A0004 
+@ItemNumber = NewItem06
 @StorageDimensionGroupName = Ware
-@TrackingDimensionGroupName = None
-@InventoryReservationHierarchyName = Default
-@ItemModelGroupId = FIFO
-@ProductGroupId = UnitConversionSequenceGroupId
-@InventoryUnitSymbol = Ea
-@ProductGroupId = Audio
-@UnitConversionSequenceGroupId = Ea
+@TrackingDimensionGroupName = Owner
+@InventoryReservationHierarchyName = DefOwner
+@ItemModelGroupId = WOM
+@ProductGroupId = WOM
+@InventoryUnitSymbol = Pcs
+@ProductGroupId = WOM
+@UnitConversionSequenceGroupId = Pcs
 
 POST {{AOS}}/data//SourceSystemProductMessages?cross-company=true
 Authorization: Bearer {{AOSToken}}

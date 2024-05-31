@@ -1,7 +1,6 @@
 ### Example of Inbound shipment order message with with two lines
 
 ### MessageId
-@MessageId = ISO-000001 
 @OrderNumber = ISO-000001
 @OrderType = Purchase order
 @PlannedReceiptPeriodStart = 2023-11-17T08:00:00Z
@@ -13,13 +12,16 @@
 @Warehouse = {{EnvWarehouse}}
 @SourceSystem = {{EnvSourceSystem}}
 
+@MessageId1 = {{$guid}}
+
+# @name ISO
 POST {{AOS}}/data/InboundShipmentOrderMessages
 Authorization: Bearer {{AOSToken}}
 Content-Type: application/json
 
 {
 "SourceSystemId": "{{SourceSystem}}",
-"MessageId": "{{MessageId}}",
+"MessageId": "{{MessageId1}}",
 "dataAreaId": "{{DataAreaId}}",
 "OrderNumber": "{{OrderNumber}}",
 "PlannedReceiptPeriodStart": "{{PlannedReceiptPeriodStart}}",
@@ -67,6 +69,11 @@ Content-Type: application/json
 }
 
 ###
+
+@MessageId = {{ISO.response.body.MessageId}}
+
+###
+
 
 POST {{AOS}}/data/InboundShipmentOrderLineMessages
 Authorization: Bearer {{AOSToken}}
@@ -127,6 +134,7 @@ Content-Type: application/json
 "OverdeliveryPercentage": 0,
 "ItemSerialNumber": ""
 }
+
 ###
 
 POST {{AOS}}/data/InboundShipmentOrderMessages(dataAreaId='{{DataAreaId}}', SourceSystemId='{{SourceSystem}}', OrderNumber='{{OrderNumber}}', MessageId='{{MessageId}}')/Microsoft.Dynamics.DataEntities.Complete?cross-company=true

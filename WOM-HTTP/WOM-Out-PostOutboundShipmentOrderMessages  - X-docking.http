@@ -1,6 +1,5 @@
 ### Example of Outbound shipment order message for x-doccking
 
-@MessageId =  OSO-XD-000001
 @OrderNumber = OSO-XD-000001
 # X-docking-SourceID (will get line # added in this example)
 @CrossDockSourceId = ISO-XD-000001
@@ -15,6 +14,9 @@
 @Warehouse = {{EnvWarehouse}}
 @SourceSystem = {{EnvSourceSystem}}
 
+@MessageId1 = {{$guid}}
+
+# @name ISO
 POST {{AOS}}/data/OutboundShipmentOrderMessages
 Authorization: Bearer {{AOSToken}}
 Content-Type: application/json
@@ -30,6 +32,10 @@ Content-Type: application/json
 "RequestedShippingPeriodStart": "{{RequestedShippingPeriodStart}}",
 "RequestedShippingPeriodEnd": "{{RequestedShippingPeriodEnd}}"
 }
+
+###
+
+@MessageId = {{ISO.response.body.MessageId}}
 
 ###
 

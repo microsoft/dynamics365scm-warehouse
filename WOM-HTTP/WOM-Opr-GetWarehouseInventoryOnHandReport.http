@@ -12,7 +12,7 @@ GET {{AOS}}/data/WarehouseInventoryOnhandReports?$filter=ReportName eq '{{Report
 Authorization: Bearer {{AOSToken}}
 Content-Type: application/json
 
-###
+### Report based ReportNumber
 GET {{AOS}}/data/WarehouseInventoryOnhandReports?$filter=ReportNumber eq ({{ReportNumber}})&cross-company=true
 Authorization: Bearer {{AOSToken}}
 Content-Type: application/json

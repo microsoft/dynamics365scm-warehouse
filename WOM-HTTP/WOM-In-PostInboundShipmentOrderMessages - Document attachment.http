@@ -1,6 +1,5 @@
 ### Example for Inbound shipment order document attachment message
 
-@MessageId = ISO-DA-000001
 @OrderNumber = ISO-DA-000001
 // Note attachment
 @AttachmentOrderHeaderNote = Note for order: {{OrderNumber}}
@@ -11,17 +10,24 @@
 @Warehouse = {{EnvWarehouse}}
 @SourceSystem = {{EnvSourceSystem}}
 
+@MessageId1 = {{$guid}}
+
+# @name ISO
 POST {{AOS}}/data/InboundShipmentOrderMessages
 Authorization: Bearer {{AOSToken}}
 Content-Type: application/json
 
 {
-"MessageId": "{{MessageId}}",
+"MessageId": "{{MessageId1}}",
 "dataAreaId": "{{DataAreaId}}",
 "SourceSystemId": "{{SourceSystem}}",
 "OrderNumber": "{{OrderNumber}}",
 "ReceivingWarehouseId": "{{Warehouse}}"
 }
+
+###
+
+@MessageId = {{ISO.response.body.MessageId}}
 
 ###
 

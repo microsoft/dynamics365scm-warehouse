@@ -1,6 +1,5 @@
 ### Example for Outbound shipment order document attachment message
 
-@MessageId = OSO-DA-000001 
 @OrderNumber = OSO-DA-000001
 @ConsigneeName = Me
 @ConsigneeCountryRegionId = USA
@@ -13,12 +12,15 @@
 @Warehouse = {{EnvWarehouse}}
 @SourceSystem = {{EnvSourceSystem}}
 
+@MessageId1 = {{$guid}}
+
+# @name ISO
 POST {{AOS}}/data/OutboundShipmentOrderMessages
 Authorization: Bearer {{AOSToken}}
 Content-Type: application/json
 
 {
-"MessageId": "{{MessageId}}",
+"MessageId": "{{MessageId1}}",
 "dataAreaId": "{{DataAreaId}}",
 "SourceSystemId": "{{SourceSystem}}",
 "OrderNumber": "{{OrderNumber}}",
@@ -26,6 +28,10 @@ Content-Type: application/json
 "ConsigneeName": "{{ConsigneeName}}",
 "ConsigneeCountryRegionId": "{{ConsigneeCountryRegionId}}"
 }
+
+###
+
+@MessageId = {{ISO.response.body.MessageId}}
 
 ###
 

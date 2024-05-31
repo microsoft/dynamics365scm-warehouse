@@ -1,6 +1,6 @@
 ### Example of getting information about shipped inventory related to the journal version provided via business event 'WHSShipmentPackingSlipJournalModifiedBusinessEvent' data 
 
-@ShipmentPackingSlipVersionNumber = USMF-00000001.1
+@ShipmentPackingSlipVersionNumber = USWH-00000001.1
 
 
 @AOS = {{EnvAOS}}
