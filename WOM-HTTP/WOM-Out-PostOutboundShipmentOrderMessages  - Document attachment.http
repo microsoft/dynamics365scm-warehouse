@@ -14,7 +14,7 @@
 
 @MessageId1 = {{$guid}}
 
-# @name ISO
+# @name GetMessageId
 POST {{AOS}}/data/OutboundShipmentOrderMessages
 Authorization: Bearer {{AOSToken}}
 Content-Type: application/json
@@ -31,7 +31,7 @@ Content-Type: application/json
 
 ###
 
-@MessageId = {{ISO.response.body.MessageId}}
+@MessageId = {{GetMessageId.response.body.MessageId}}
 
 ###
 
