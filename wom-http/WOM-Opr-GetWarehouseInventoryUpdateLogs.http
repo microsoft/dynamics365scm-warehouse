@@ -1,0 +1,10 @@
+### Example of getting Warehouse inventory update logs information related to business event 'WHSInventoryUpdateLogBusinessEvent' 
+### In this example the WarehouseID is used as filter, just to make a simple demo... 
+
+@AOS = {{EnvAOS}}
+@AOSToken = {{EnvAOSToken}}
+@Warehouse = {{EnvWarehouse}}
+
+GET {{AOS}}/data/WarehouseInventoryUpdateLogs?$filter=WarehouseId   eq '{{Warehouse}}'&cross-company=true
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json

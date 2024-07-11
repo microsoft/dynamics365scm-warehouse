@@ -1,0 +1,54 @@
+### Example of Inbound shipment order messages for x-docking
+
+### OrderNumber
+@OrderNumber = ISO-XD-000001
+
+
+@AOS = {{EnvAOS}}
+@AOSToken = {{EnvAOSToken}}
+@DataAreaId = {{EnvDataAreaId}}
+@Warehouse = {{EnvWarehouse}}
+@SourceSystem = {{EnvSourceSystem}}
+
+@MessageId1 = {{$guid}}
+
+# @name GetMessageId
+POST {{AOS}}/data/InboundShipmentOrderMessages
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+"MessageId": "{{MessageId1}}",
+"dataAreaId": "{{DataAreaId}}",
+"SourceSystemId": "{{SourceSystem}}",
+"OrderNumber": "{{OrderNumber}}",
+"ReceivingWarehouseId": "{{Warehouse}}"
+}
+###
+
+@MessageId = {{GetMessageId.response.body.MessageId}}
+
+###
+
+POST {{AOS}}/data/InboundShipmentOrderLineMessages
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+"MessageId": "{{MessageId}}",
+"dataAreaId": "{{DataAreaId}}",
+"SourceSystemId": "{{SourceSystem}}",
+"OrderNumber": "{{OrderNumber}}",
+"OrderLineNumber": 1,
+"ItemNumber": "A0001",
+"ExpectedQuantity": 10,
+"ExpectedUnitSymbol": "pcs",
+"CrossDockSourceId" : "{{OrderNumber}}-1"
+}
+
+###
+
+POST {{AOS}}/data/InboundShipmentOrderMessages(dataAreaId='{{DataAreaId}}', SourceSystemId='{{SourceSystem}}', OrderNumber='{{OrderNumber}}', MessageId='{{MessageId}}')/Microsoft.Dynamics.DataEntities.Complete?cross-company=true
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+ 

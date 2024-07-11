@@ -1,0 +1,130 @@
+### Example of getting format data for the Material handling equiptment process
+### Make sure having the configuration key enabled for "Material handling equipment interface"
+### Having Number sequences created
+### Having the Material handling equipment interface parameters defined
+
+@AOS = {{EnvAOS}}
+@AOSToken = {{EnvAOSToken}}
+@MessageId = {{$guid}}
+
+
+@data01-LP = LP1
+# LPReceipt
+POST {{AOS}}/api/services/WMHEServices/executeInboundTransaction
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+ {
+   "_messageId": "{{MessageId}}",
+   "_inboundTransType": "LPReceipt",
+   "_data01": "{{data01-LP}}",
+   "_data02": "",
+   "_data03": "",
+   "_data04": "",
+   "_data05": "",
+   "_data06": "",
+   "_data07": "",
+   "_data08": "",
+   "_data09": "",
+   "_data10": ""
+ }
+
+###
+
+# Override
+@data01-RecId = 68719478382
+@data02-NewLocation = BULK-001
+POST {{AOS}}/api/services/WMHEServices/executeInboundTransaction
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+ {
+   "_messageId": "{{MessageId}}",
+   "_inboundTransType": "Override",
+   "_data01": "{{data01-RecId}}",
+   "_data02": "{{data02-NewLocation}}",  
+   "_data03": "",
+   "_data04": "",
+   "_data05": "",
+   "_data06": "",
+   "_data07": "",
+   "_data08": "",
+   "_data09": "",
+   "_data10": ""
+ }
+
+###
+
+# ShortPick
+@data02-RecId-SP = 68719478380
+@data03-PickingFromLP =
+@data04-QtyToPick =
+@data05-ExceptionCode = ShortPickMHE
+@data06-WorkHeaderTargetLP =
+
+POST {{AOS}}/api/services/WMHEServices/executeInboundTransaction
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+ {
+   "_messageId": "{{MessageId}}",
+   "_inboundTransType": "ShortPick",
+   "_data01": "", // Not used
+   "_data02": "{{data02-RecId-SP}}",
+   "_data03": "{{data03-PickingFromLP}}",
+   "_data04": "{{data04-QtyToPick}}",
+   "_data05": "{{data05-ExceptionCode}}",
+   "_data06": "{{data06-WorkHeaderTargetLP}}",
+   "_data07": "",
+   "_data08": "",
+   "_data09": "",
+   "_data10": ""
+ }
+
+###
+
+# WorkConfirm (Line-Pair-ID)
+@data01-Line-Pair-ID = USMF-000000002
+POST {{AOS}}/api/services/WMHEServices/executeInboundTransaction
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+ {
+   "_messageId": "{{MessageId}}",
+   "_inboundTransType": "WorkConfirm",
+   "_data01": "{{data01-Line-Pair-ID}}",
+   "_data02": "",
+   "_data03": "",
+   "_data04": "",
+   "_data05": "",
+   "_data06": "",
+   "_data07": "",
+   "_data08": "",
+   "_data09": "",
+   "_data10": ""
+ }
+
+###
+
+# WorkConfirm (Rec-Id)
+@data02-RecId-WC = 68719478379
+POST {{AOS}}/api/services/WMHEServices/executeInboundTransaction
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+ {
+   "_messageId": "{{MessageId}}",
+   "_inboundTransType": "WorkConfirm",
+   "_data01": "",
+   "_data02": "{{data02-RecId-WC}}",
+   "_data03": "",
+   "_data04": "",
+   "_data05": "",
+   "_data06": "",
+   "_data07": "",
+   "_data08": "",
+   "_data09": "",
+   "_data10": ""
+ }
+
+

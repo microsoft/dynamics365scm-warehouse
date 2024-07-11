@@ -1,0 +1,142 @@
+### Example of Inbound shipment order message with with two lines
+
+### MessageId
+@OrderNumber = ISO-000001
+@OrderType = Purchase order
+@PlannedReceiptPeriodStart = 2023-11-17T08:00:00Z
+@PlannedReceiptPeriodEnd  = 2023-11-17T08:00:00Z
+
+@AOS = {{EnvAOS}}
+@AOSToken = {{EnvAOSToken}}
+@DataAreaId = {{EnvDataAreaId}}
+@Warehouse = {{EnvWarehouse}}
+@SourceSystem = {{EnvSourceSystem}}
+
+@MessageId1 = {{$guid}}
+
+# @name GetMessageId
+POST {{AOS}}/data/InboundShipmentOrderMessages
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+"SourceSystemId": "{{SourceSystem}}",
+"MessageId": "{{MessageId1}}",
+"dataAreaId": "{{DataAreaId}}",
+"OrderNumber": "{{OrderNumber}}",
+"PlannedReceiptPeriodStart": "{{PlannedReceiptPeriodStart}}",
+"PlannedReceiptPeriodEnd": "{{PlannedReceiptPeriodEnd}}",
+"ReceivingWarehouseId": "{{Warehouse}}",
+"OrderType": "{{OrderType}}",
+"ConsignerAccountNumber": "US-201A",
+"ConsignerName": "US-201",
+"ConsignerStreet": "234 S Main St.",
+"ConsignerCity": "Pleasanton",
+"ConsignerState": "CA",
+"ConsignerZipCode": "945889",
+"ConsignerDistrict": "ConsignerDistrict",
+"ConsignerEmail": "ConsignerEmail@someD.com",
+"ConsignerContactName": "ConsignerContactName",
+"ConsignerCountryRegionId": "USA",
+"ConsignerTelephone": "111-555-0177",
+"ConsignerReference": "ConsignerReference",
+"ConsignerBuildingComplement": "ConsignerBuildingComplement",
+"ConsignerTimeZone": null,
+"ConsignerCounty": "",
+"ConsignerStreetNumber": "",
+"ConsignerLatitude": 0,
+"SenderName":"Rain Projectors",
+"SenderStreet": "678 John Street",
+"SenderZipCode": "20005",
+"SenderState": "DC",
+"SenderCountryRegionId": "USA",
+"SenderLatitude": 0,
+"ConsignerPostBox": "",
+"SenderDistrict": "",
+"ConsignerStreetInKana": "",
+"SenderStreetInKana": "",
+"ConsignerCityInKana": "",
+"SenderPostBox": "",
+"SenderTimeZone": null,
+"SenderCityInKana": "",
+"SenderLongitude": 0,
+"SenderCity": "",
+"SenderCounty": "",
+"SenderStreetNumber": "",
+"SenderBuildingComplement": "",
+"OrderOrigin": "",
+"OrderChannel": ""
+}
+
+###
+
+@MessageId = {{GetMessageId.response.body.MessageId}}
+
+###
+
+POST {{AOS}}/data/InboundShipmentOrderLineMessages
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+"SourceSystemId": "{{SourceSystem}}",
+"MessageId": "{{MessageId}}",
+"dataAreaId": "{{DataAreaId}}",
+"OrderNumber": "{{OrderNumber}}",
+"OrderLineNumber": 1,
+"ConsignerLineNumber": 1,
+"ItemNumber": "A0001",
+"ExpectedUnitSymbol": "pcs",
+"ExpectedQuantity": 10,
+"ItemBatchNumber": "",
+"ProductConfigurationId": "",
+"CrossDockSourceId": "",
+"InventoryOwnerId": "",
+"ProductSizeId": "",
+"ExpectedInventoryStatus": "",
+"ProductColorId": "",
+"ConsignerReference": "",
+"ProductVersionId": "",
+"ProductStyleId": "",
+"UnderdeliveryPercentage": 0,
+"OverdeliveryPercentage": 0,
+"ItemSerialNumber": ""
+}
+
+###
+
+POST {{AOS}}/data/InboundShipmentOrderLineMessages
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+"SourceSystemId": "{{SourceSystem}}",
+"MessageId": "{{MessageId}}",
+"dataAreaId": "{{DataAreaId}}",
+"OrderNumber": "{{OrderNumber}}",
+"OrderLineNumber": 2,
+"ConsignerLineNumber": 2,
+"ItemNumber": "A0002",
+"ExpectedUnitSymbol": "pcs",
+"ExpectedQuantity": 20,
+"ItemBatchNumber": "",
+"ProductConfigurationId": "",
+"CrossDockSourceId": "",
+"InventoryOwnerId": "",
+"ProductSizeId": "",
+"ExpectedInventoryStatus": "",
+"ProductColorId": "",
+"ConsignerReference": "",
+"ProductVersionId": "",
+"ProductStyleId": "",
+"UnderdeliveryPercentage": 0,
+"OverdeliveryPercentage": 0,
+"ItemSerialNumber": ""
+}
+
+###
+
+POST {{AOS}}/data/InboundShipmentOrderMessages(dataAreaId='{{DataAreaId}}', SourceSystemId='{{SourceSystem}}', OrderNumber='{{OrderNumber}}', MessageId='{{MessageId}}')/Microsoft.Dynamics.DataEntities.Complete?cross-company=true
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+ 

@@ -1,0 +1,39 @@
+### Example of getting format data for the Material handling equiptment process
+### Make sure having the configuration key enabled for "Material handling equipment interface"
+### Having Number sequences created
+### Having the Material handling equipment interface parameters defined
+
+@AOS = {{EnvAOS}}
+@AOSToken = {{EnvAOSToken}}
+
+GET {{AOS}}/api/services/WMHEServices/WMHEService
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+###
+
+GET {{AOS}}/api/services/WMHEServices/WMHEService/executeInboundTransaction
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+###
+
+GET {{AOS}}/api/services/WMHEServices/WMHEService/readOutboundSubscriptionQueue
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+###
+
+GET {{AOS}}/api/services/WMHEServices/WMHEService/readOutboundWarehouseQueue
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+###
+
+GET {{AOS}}/api/services/WMHEServices/WMHEService/executeInboundTransactionFromParameters
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+
+
+

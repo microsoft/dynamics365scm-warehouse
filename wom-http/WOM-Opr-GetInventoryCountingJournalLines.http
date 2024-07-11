@@ -1,0 +1,12 @@
+### Example of getting counting journal line information related to journal number provided via business event 'InventCountingJournalPostedBusinessEvent' 
+
+@JournalNumber = 00071
+
+@AOS = {{EnvAOS}}
+@AOSToken = {{EnvAOSToken}}
+
+GET {{AOS}}/data/InventoryCountingJournalLines?$filter=JournalNumber  eq '{{JournalNumber}}'&cross-company=true
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+

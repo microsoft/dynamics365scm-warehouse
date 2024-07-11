@@ -1,0 +1,72 @@
+### Example of ASN creation upagainst exiting Inbound shipment order by using seperate data entities (not the combined)
+### InboundLoadHeaders, InboundShipmentHeaders, InboundLoadPackingStructures, InboundLoadPackingStructureLinesV5
+
+
+### ToDo    Convert to decimal "OrderLineNumber": "{{OrderLineNumber}}"
+
+@AOS = {{EnvAOS}}
+@AOSToken = {{EnvAOSToken}}
+@DataAreaId = {{EnvDataAreaId}}
+
+@Module = InboundShipmentOrder
+@LoadId =  L-ASN-01
+@ShipmentId =  S-ASN-01
+@LicensePlateNumber = LP-ASN-01
+@OrderNumber = ISO-000001
+@OrderLineNumber = 1
+@ItemNumber = A0001
+@Quantity = 10
+@UnitSymbol = Pcs
+
+
+POST {{AOS}}/data/InboundLoadHeaders?cross-company=true
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+"dataAreaId": "{{DataAreaId}}",
+"LoadId": "{{LoadId}}"
+}
+
+### 
+
+POST {{AOS}}/data/InboundShipmentHeaders?cross-company=true
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+"dataAreaId": "{{DataAreaId}}",
+"ShipmentId": "{{ShipmentId}}",
+"InboundLoadId": "{{LoadId}}"
+}
+
+### 
+
+POST {{AOS}}/data/InboundLoadPackingStructures?cross-company=true
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+"dataAreaId": "{{DataAreaId}}",
+"InboundShipmentId": "{{ShipmentId}}",
+"LicensePlateNumber": "{{LicensePlateNumber}}",
+"Module": "{{Module}}"
+}
+
+### 
+
+POST {{AOS}}/data/InboundLoadPackingStructureLinesV5?cross-company=true
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+"dataAreaId": "{{DataAreaId}}",
+"InboundShipmentId": "{{ShipmentId}}",
+"PackingStructureLicensePlateNumber": "{{LicensePlateNumber}}",
+"Module": "{{Module}}",
+"ItemNumber": "{{ItemNumber}}",
+"Quantity": "{{Quantity}}",
+"UnitSymbol": "{{UnitSymbol}}",
+"OrderNumber": "{{OrderNumber}}",
+"OrderLineNumber": "{{OrderLineNumber}}"
+}

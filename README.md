@@ -1,14 +1,11 @@
-# Project
+# Welcome to the Warehouse Managment sample code and documentation repository
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+This project includes sample code and other tools that can be used by customers and partners when implementing or using the Dynamics 365 Supply Chain Management's Warehouse Management module.
 
-As the maintainer of this project, please make a few updates:
+## Contents
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+### Integration with external label printing services
+* [BarTender Cloud Azure API Management facade for authentication and request logging](external-label-services/BarTenderCloudAPIM.md)
 
 ## Contributing
 
