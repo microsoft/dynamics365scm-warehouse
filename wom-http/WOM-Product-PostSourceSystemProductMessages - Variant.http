@@ -1,0 +1,104 @@
+### Example of product variant master data creation via Source system product messages
+### SourceSystemProductMessages, SourceSystemProductVariantMessages
+@MessageId = {{$guid}}
+
+@AOS = {{EnvAOS}}
+@AOSToken = {{EnvAOSToken}}
+@DataAreaId = {{EnvDataAreaId}}
+@SourceSystem = {{EnvSourceSystem}}
+
+@ItemNumber = AV0001
+@VariantNumber = AV0001_1
+@ProductColorId = C1
+@ProductConfigurationId = 
+@ProductSizeId =
+@ProductStyleId =
+@ProductSubtype = ProductMaster
+@ProductDimensionGroupName = Color
+@StorageDimensionGroupName = Ware
+@TrackingDimensionGroupName = None
+@InventoryReservationHierarchyName = Default
+@ItemModelGroupId = FIFO
+@ProductGroupId = UnitConversionSequenceGroupId
+@InventoryUnitSymbol = Ea
+@ProductGroupId = Audio
+@UnitConversionSequenceGroupId = Ea
+
+POST {{AOS}}/data/SourceSystemProductMessages?cross-company=true
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+"SourceSystemId": "{{SourceSystem}}",
+"MessageId": "{{MessageId}}",
+"dataAreaId": "{{DataAreaId}}",
+"ProductSubtype": "{{ProductSubtype}}",
+"SourceSystemProductNumber": "{{ItemNumber}}",
+"SourceSystemItemNumber": "{{ItemNumber}}",
+"SearchName": "",
+"ProductSearchName": "",
+"WarehouseMobileDeviceDescriptionLine1": "",
+"WarehouseMobileDeviceDescriptionLine2": "",
+"ProductDimensionGroupName": "{{ProductDimensionGroupName}}",
+"StorageDimensionGroupName": "{{StorageDimensionGroupName}}",
+"TrackingDimensionGroupName": "{{TrackingDimensionGroupName}}",
+"InventoryReservationHierarchyName": "{{InventoryReservationHierarchyName}}",
+"ItemModelGroupId": "{{ItemModelGroupId}}",
+"ProductGroupId": "{{ProductGroupId}}",
+"InventoryUnitSymbol": "{{InventoryUnitSymbol}}",
+"UnitConversionSequenceGroupId": "{{UnitConversionSequenceGroupId}}",
+"PackSizeCategoryId": "",
+"PackingMaterialGroupId": "",
+"PackageClassId": "",
+"ProductLifecycleStateId": "",
+"PhysicalDimensionGroupId": "",
+"InventoryCountingReasonCodePolicyName": "",
+"ProductVolume": 0,
+"GrossProductDepth": 0,
+"TareProductWeight": 0,
+"GrossProductWidth": 0,
+"GrossProductHeight": 0,
+"NetProductWeight": 0,
+"FirstProductFilterGroupId": "",
+"SecondProductFilterGroupId": "",
+"FirstProductFilterCode": "",
+"SecondProductFilterCode": "",
+"ThirdProductFilterCode": "",
+"FourthProductFilterCode": "",
+"FifthProductFilterCode": "",
+"SixthProductFilterCode": "",
+"SeventhProductFilterCode": "",
+"EighthProductFilterCode": "",
+"NinthProductFilterCode": "",
+"TenthProductFilterCode": "",
+"UnitCost": 0,
+"SerialNumberGroupCode": "",
+"BatchNumberGroupCode": "",
+"IsHazardousMaterial": "No",
+"ShelfLifePeriodDays": 0,
+"OriginCountryRegionId": "",
+"ShelfAdvicePeriodDays": 0,
+"BestBeforePeriodDays": 0
+}
+
+###
+
+POST {{AOS}}/data/SourceSystemProductVariantMessages?cross-company=true
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+"SourceSystemId": "{{SourceSystem}}",
+"MessageId": "{{MessageId}}",
+"dataAreaId": "{{DataAreaId}}",
+"SourceSystemItemMasterNumber": "{{ItemNumber}}",
+"SourceSystemItemNumber": "{{VariantNumber}}",
+"SourceSystemProductNumber": "{{VariantNumber}}",
+"ProductName": "{{VariantNumber}}",
+"ProductSearchName": "{{VariantNumber}}",
+"ProductDescription": "{{VariantNumber}}",
+"ProductConfigurationId": "{{ProductConfigurationId}}",
+"ProductSizeId": "{{ProductSizeId}}",
+"ProductColorId": "{{ProductColorId}}",
+"ProductStyleId": "{{ProductStyleId}}"
+}

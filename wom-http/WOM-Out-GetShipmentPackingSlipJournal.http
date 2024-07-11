@@ -1,0 +1,23 @@
+### Example of getting information about shipped inventory related to the journal version provided via business event 'WHSShipmentPackingSlipJournalModifiedBusinessEvent' data 
+
+@ShipmentPackingSlipVersionNumber = USWH-00000001.1
+
+
+@AOS = {{EnvAOS}}
+@AOSToken = {{EnvAOSToken}}
+
+GET {{AOS}}/data/ShipmentPackingSlipJournalHeaders?$filter=ShipmentPackingSlipVersionNumber eq '{{ShipmentPackingSlipVersionNumber}}'&cross-company=true
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+###
+
+GET {{AOS}}/data/ShipmentPackingSlipJournalLines?$filter=ShipmentPackingSlipVersionNumber eq '{{ShipmentPackingSlipVersionNumber}}'&cross-company=true
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+###
+
+GET {{AOS}}/data/ShipmentPackingSlipTransactionDimensions?$filter=ShipmentPackingSlipVersionNumber eq '{{ShipmentPackingSlipVersionNumber}}'&cross-company=true
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json

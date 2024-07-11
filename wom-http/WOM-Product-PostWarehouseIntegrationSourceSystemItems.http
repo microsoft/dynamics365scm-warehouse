@@ -1,0 +1,62 @@
+### Examples of inserting data into the Source system item entity
+
+@MessageId = {{$guid}}
+
+@AOS = {{EnvAOS}}
+@AOSToken = {{EnvAOSToken}}
+@DataAreaId = {{EnvDataAreaId}}
+@SourceSystem = {{EnvSourceSystem}}
+
+@ItemNumber = A0001 
+
+POST {{AOS}}/data/WarehouseIntegrationSourceSystemItems?cross-company=true
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+"SourceSystemId": "{{SourceSystem}}",
+"dataAreaId": "{{DataAreaId}}",
+"SourceSystemItemNumber": "{{ItemNumber}}",
+"ItemNumber": "{{ItemNumber}}",
+"ProductVersionId": "",
+"ProductStyleId": "",
+"ProductConfigurationId": "",
+"ProductColorId": "",
+"ProductSizeId": ""
+}
+
+### 
+
+POST {{AOS}}/data/WarehouseIntegrationSourceSystemItems?cross-company=true
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+"SourceSystemId": "{{SourceSystem}}",
+"dataAreaId": "{{DataAreaId}}",
+"SourceSystemItemNumber": "W0001",
+"ItemNumber": "W0001",
+"ProductVersionId": "",
+"ProductStyleId": "",
+"ProductConfigurationId": "",
+"ProductColorId": "",
+"ProductSizeId": ""
+}
+
+### 
+
+POST {{AOS}}/data/WarehouseIntegrationSourceSystemItems?cross-company=true
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+"SourceSystemId": "{{SourceSystem}}",
+"dataAreaId": "{{DataAreaId}}",
+"SourceSystemItemNumber": "W0001-Black-Large",
+"ItemNumber": "W0001",
+"ProductVersionId": "",
+"ProductStyleId": "",
+"ProductConfigurationId": "",
+"ProductColorId": "Black",
+"ProductSizeId": "Large"
+}

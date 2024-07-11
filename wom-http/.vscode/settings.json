@@ -1,0 +1,21 @@
+{
+    "rest-client.environmentVariables":
+     {
+     	"local":
+        {
+		    "EnvAOS": "https://usnconeboxax1aos.cloud.onebox.dynamics.com",
+            "EnvAOSToken": "",
+            "EnvDataAreaId":  "USWH",
+            "EnvWarehouse": "24",
+            "EnvSourceSystem": "D365-PIM"
+		},
+		"USMF":
+        {
+        	"EnvAOS": "https://usnconeboxax1aos.cloud.onebox.dynamics.com",
+            "EnvAOSToken": "",   
+            "EnvDataAreaId":  "USMF",
+            "EnvWarehouse": "24",
+            "EnvSourceSystem": "ERP"
+		}
+	}
+}

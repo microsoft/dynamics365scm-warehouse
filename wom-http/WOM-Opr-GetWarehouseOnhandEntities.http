@@ -1,0 +1,16 @@
+### Example of getting warehouse on-hand information via different entities not specificly related to Warehouse management only mode
+
+@Warehouse = {{EnvWarehouse}}
+
+@AOS = {{EnvAOS}}
+@AOSToken = {{EnvAOSToken}}
+
+GET {{AOS}}/data/WarehousesOnHandV2?$filter=InventoryWarehouseId eq '{{Warehouse}}'&cross-company=true
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+### 
+
+GET {{AOS}}/data/WarehouseInventoryStatusesOnHandV2?$filter=InventoryWarehouseId eq '{{Warehouse}}'&cross-company=true
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json

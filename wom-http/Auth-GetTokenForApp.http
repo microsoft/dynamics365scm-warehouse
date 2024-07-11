@@ -1,0 +1,13 @@
+@tenant = something.onmicrosoft.com
+@clientId = 00000000-0000-0000-0000-000000000000
+
+### Requests a token to access Dynamics 365 SCM APIs
+# @prompt clientSecret
+POST https://login.microsoftonline.com/{{tenant}}/oauth2/v2.0/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id={{clientId}}
+&scope={{EnvAOS}}/.default
+&client_secret={{clientSecret}}
+&grant_type=client_credentials
+

@@ -1,0 +1,69 @@
+### Example for Inbound shipment order document attachment message
+
+@OrderNumber = ISO-DA-000001
+// Note attachment
+@AttachmentOrderHeaderNote = Note for order: {{OrderNumber}}
+
+@AOS = {{EnvAOS}}
+@AOSToken = {{EnvAOSToken}}
+@DataAreaId = {{EnvDataAreaId}}
+@Warehouse = {{EnvWarehouse}}
+@SourceSystem = {{EnvSourceSystem}}
+
+@MessageId1 = {{$guid}}
+
+# @name GetMessageId
+POST {{AOS}}/data/InboundShipmentOrderMessages
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+"MessageId": "{{MessageId1}}",
+"dataAreaId": "{{DataAreaId}}",
+"SourceSystemId": "{{SourceSystem}}",
+"OrderNumber": "{{OrderNumber}}",
+"ReceivingWarehouseId": "{{Warehouse}}"
+}
+
+###
+
+@MessageId = {{GetMessageId.response.body.MessageId}}
+
+###
+
+POST {{AOS}}/data/InboundShipmentOrderDocumentAttachmentMessages
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+  "MessageId": "{{MessageId}}",
+  "dataAreaId": "{{DataAreaId}}",
+  "SourceSystemId": "{{SourceSystem}}",
+  "OrderNumber": "{{OrderNumber}}",
+  "DocumentAttachmentTypeCode": "Note",
+  "Notes": "{{AttachmentOrderHeaderNote}}"
+}
+
+###
+
+POST {{AOS}}/data/InboundShipmentOrderLineMessages
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+"MessageId": "{{MessageId}}",
+"dataAreaId": "{{DataAreaId}}",
+"SourceSystemId": "{{SourceSystem}}",
+"OrderNumber": "{{OrderNumber}}",
+"OrderLineNumber": 1,
+"ItemNumber": "A0001",
+"ExpectedQuantity": 10,
+"ExpectedUnitSymbol": "pcs"
+}
+
+###
+
+POST {{AOS}}/data/InboundShipmentOrderMessages(dataAreaId='{{DataAreaId}}', SourceSystemId='{{SourceSystem}}', OrderNumber='{{OrderNumber}}', MessageId='{{MessageId}}')/Microsoft.Dynamics.DataEntities.Complete?cross-company=true
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+ 

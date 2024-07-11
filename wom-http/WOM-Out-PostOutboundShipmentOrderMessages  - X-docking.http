@@ -1,0 +1,78 @@
+### Example of Outbound shipment order message for x-doccking
+
+@OrderNumber = OSO-XD-000001
+# X-docking-SourceID (will get line # added in this example)
+@CrossDockSourceId = ISO-XD-000001
+@ConsigneeName = Me
+@ConsigneeCountryRegionId = USA
+@RequestedShippingPeriodStart = 2023-11-17T08:00:00Z
+@RequestedShippingPeriodEnd = 2023-11-17T08:00:00Z
+
+@AOS = {{EnvAOS}}
+@AOSToken = {{EnvAOSToken}}
+@DataAreaId = {{EnvDataAreaId}}
+@Warehouse = {{EnvWarehouse}}
+@SourceSystem = {{EnvSourceSystem}}
+
+@MessageId1 = {{$guid}}
+
+# @name GetMessageId
+POST {{AOS}}/data/OutboundShipmentOrderMessages
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+"MessageId": "{{MessageId}}",
+"dataAreaId": "{{DataAreaId}}",
+"SourceSystemId": "{{SourceSystem}}",
+"OrderNumber": "{{OrderNumber}}",
+"ShipFromWarehouseId": "{{Warehouse}}",
+"ConsigneeName": "{{ConsigneeName}}",
+"ConsigneeCountryRegionId": "{{ConsigneeCountryRegionId}}",
+"RequestedShippingPeriodStart": "{{RequestedShippingPeriodStart}}",
+"RequestedShippingPeriodEnd": "{{RequestedShippingPeriodEnd}}"
+}
+
+###
+
+@MessageId = {{GetMessageId.response.body.MessageId}}
+
+###
+
+POST {{AOS}}/data/OutboundShipmentOrderLineMessages
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+"MessageId": "{{MessageId}}",
+"dataAreaId": "{{DataAreaId}}",
+"SourceSystemId": "{{SourceSystem}}",
+"OrderNumber": "{{OrderNumber}}",
+"OrderLineNumber": 1,
+"ItemNumber": "A0001",
+"OrderedQuantity": 1,
+"OrderedUnitSymbol": "Pcs"
+}
+
+###
+
+POST {{AOS}}/data/OutboundShipmentOrderLineCrossDockMessages
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+
+{
+"MessageId": "{{MessageId}}",
+"dataAreaId": "{{DataAreaId}}",
+"SourceSystemId": "{{SourceSystem}}",
+"OrderNumber": "{{OrderNumber}}",
+"OrderLineNumber": 1,
+"CrossDockSourceId": "{{CrossDockSourceId}}-1",
+"SourceLineRequestedQuantity": 1
+}
+
+###
+
+POST {{AOS}}/data/OutboundShipmentOrderMessages(dataAreaId='{{DataAreaId}}', SourceSystemId='{{SourceSystem}}', OrderNumber='{{OrderNumber}}', MessageId='{{MessageId}}')/Microsoft.Dynamics.DataEntities.Complete?cross-company=true
+Authorization: Bearer {{AOSToken}}
+Content-Type: application/json
+ 
