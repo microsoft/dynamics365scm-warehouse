@@ -10,5 +10,6 @@ The *.http files can be executed with the REST Client extension (https://github.
 
 In order to connect to Dynamics 365 Supply Chain Management endpoint, you need to provide an OAuth 2.0 access token and save it in the EnvAOSToken variable. You can get the token in two ways:
 
-    1. Using the capabilities of the vscode-restclient extension, by using the `{{$aadV2Token}}` system variable with scope `https://usnconeboxax1aos.cloud.onebox.dynamics.com/Odata.FullAccess` (replacing the URL with the URL of your environment).
-    2. Registering an application with a client secret and then using the [Auth-GetTokenForApp.http] request, filling in the tenant, client ID and client secret.
+1. Using the capabilities of the vscode-restclient extension, by using the `{{$aadV2Token}}` system variable with scope `https://usnconeboxax1aos.cloud.onebox.dynamics.com/Odata.FullAccess` (replacing the URL with the URL of your environment).
+
+2. Registering an application with a client secret and then using the [Auth-GetTokenForApp](Auth-GetTokenForApp.http) request, filling in the tenant, client ID and client secret.
