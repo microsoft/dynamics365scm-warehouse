@@ -4,8 +4,8 @@ This project includes sample code and other tools that can be used by customers 
 
 ## Contents
 
-### Integration with external label printing services
-* [BarTender Cloud Azure API Management facade for authentication and request logging](external-label-services/BarTenderCloudAPIM.md)
+### Warehouse only mode example requests
+* [WOM examples](wom-http/README.md)
 
 ## Contributing
 
